@@ -2,7 +2,7 @@ import 'package:cubitbloc_state_management/bloc/counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BlocBuilderPage extends StatelessWidget {
+class BasicBlocPage extends StatelessWidget {
   Counter mycounter = Counter();
 
   @override
