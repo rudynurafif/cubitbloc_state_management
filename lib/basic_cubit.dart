@@ -32,8 +32,8 @@ class CounterCubit extends Cubit<int> {
   // onError
   @override
   void onError(Object error, StackTrace stackTrace) {
-    // TODO: implement onError
     super.onError(error, stackTrace);
+    print(error);
   }
 }
 
@@ -58,21 +58,9 @@ class BasicCubit extends StatelessWidget {
             initialData: myCounter.initialData,
             stream: myCounter.stream,
             builder: (context, snapshot) {
-              return Column(
-                children: [
-                  Text(
-                    "${snapshot.data}",
-                    style: TextStyle(fontSize: 50),
-                  ),
-                  Text(
-                    "Current : ${myCounter.current}",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Text(
-                    "Next : ${myCounter.next}",
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ],
+              return Text(
+                "${snapshot.data}",
+                style: TextStyle(fontSize: 50),
               );
             },
           ),
