@@ -1,5 +1,6 @@
 import 'package:cubitbloc_state_management/bloc/counter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlocBuilderPage extends StatelessWidget {
   Counter mycounter = Counter();
@@ -18,16 +19,32 @@ class BlocBuilderPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          StreamBuilder(
-            initialData: mycounter.initData,
-            stream: mycounter.stream,
-            builder: (context, snapshot) {
+          BlocBuilder<Counter, int>(
+            bloc: mycounter,
+            buildWhen: (previous, current) {
+              if (current % 2 == 0) {
+                return true;
+              } else {
+                return false;
+              }
+            },
+            builder: (context, state) {
               return Text(
-                "${snapshot.data}",
+                "${state}",
                 style: const TextStyle(fontSize: 50),
               );
             },
           ),
+          // StreamBuilder(
+          //   initialData: mycounter.initData,
+          //   stream: mycounter.stream,
+          //   builder: (context, snapshot) {
+          //     return Text(
+          //       "${snapshot.data}",
+          //       style: const TextStyle(fontSize: 50),
+          //     );
+          //   },
+          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
