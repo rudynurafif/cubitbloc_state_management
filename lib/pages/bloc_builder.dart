@@ -10,7 +10,7 @@ class BlocBuilderPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Bloc Builder",
+          "Bloc Listener",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
@@ -19,32 +19,33 @@ class BlocBuilderPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocBuilder<Counter, int>(
+          BlocListener(
             bloc: mycounter,
-            buildWhen: (previous, current) {
-              if (current % 2 == 0) {
+            listener: (context, state) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Sudah mencapai 15"),
+                  duration: Duration(seconds: 1),
+                ),
+              );
+            },
+            listenWhen: (previous, current) {
+              if (current is int && current % 2 == 0) {
                 return true;
               } else {
                 return false;
               }
             },
-            builder: (context, state) {
-              return Text(
-                "${state}",
-                style: const TextStyle(fontSize: 50),
-              );
-            },
+            child: BlocBuilder<Counter, int>(
+              bloc: mycounter,
+              builder: (context, state) {
+                return Text(
+                  "$state",
+                  style: const TextStyle(fontSize: 50),
+                );
+              },
+            ),
           ),
-          // StreamBuilder(
-          //   initialData: mycounter.initData,
-          //   stream: mycounter.stream,
-          //   builder: (context, snapshot) {
-          //     return Text(
-          //       "${snapshot.data}",
-          //       style: const TextStyle(fontSize: 50),
-          //     );
-          //   },
-          // ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
