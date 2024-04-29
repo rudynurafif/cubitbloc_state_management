@@ -1,5 +1,5 @@
 import 'package:cubitbloc_state_management/pages/basic_cubit.dart';
-import 'package:cubitbloc_state_management/pages/bloc_builder.dart';
+import 'package:cubitbloc_state_management/pages/bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {

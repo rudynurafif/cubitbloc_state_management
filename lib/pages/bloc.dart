@@ -10,7 +10,7 @@ class BlocBuilderPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Bloc Listener",
+          "Bloc Consumer",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.blue,
@@ -19,32 +19,35 @@ class BlocBuilderPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocListener(
-            bloc: mycounter,
-            listener: (context, state) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Sudah mencapai 15"),
-                  duration: Duration(seconds: 1),
-                ),
+          BlocConsumer<Counter, int>(
+            builder: (context, state) {
+              return Text(
+                "$state",
+                style: const TextStyle(fontSize: 50),
               );
             },
-            listenWhen: (previous, current) {
-              if (current is int && current % 2 == 0) {
+            buildWhen: (previous, current) {
+              if (current >= 10) {
                 return true;
               } else {
                 return false;
               }
             },
-            child: BlocBuilder<Counter, int>(
-              bloc: mycounter,
-              builder: (context, state) {
-                return Text(
-                  "$state",
-                  style: const TextStyle(fontSize: 50),
-                );
-              },
-            ),
+            listener: (context, state) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Data Genap"),
+                  duration: Duration(milliseconds: 500),
+                ),
+              );
+            },
+            listenWhen: (previous, current) {
+              if (current % 2 == 0) {
+                return true;
+              } else {
+                return false;
+              }
+            },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
