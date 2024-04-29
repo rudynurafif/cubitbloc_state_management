@@ -1,4 +1,5 @@
-import 'package:cubitbloc_state_management/basic_cubit.dart';
+import 'package:cubitbloc_state_management/pages/basic_cubit.dart';
+import 'package:cubitbloc_state_management/pages/bloc_builder.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,8 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BasicCubit(),
+      // debugShowCheckedModeBanner: false,
+      home: BlocBuilderPage(),
     );
   }
 }
