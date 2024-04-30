@@ -26,11 +26,6 @@ class HomePage extends StatelessWidget {
         shadowColor: Colors.black,
         centerTitle: true,
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.of(context).pushNamed("/otherpage");
-      //   },
-      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           myTheme.changeTheme();
