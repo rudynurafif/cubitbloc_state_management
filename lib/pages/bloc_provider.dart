@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/data_widget.dart';
 
 class BlocProviderPage extends StatelessWidget {
+  const BlocProviderPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     Counter myCounter = BlocProvider.of<Counter>(context);
@@ -24,12 +26,6 @@ class BlocProviderPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.of(context).push(MaterialPageRoute(
-          //   builder: (context) => BlocProvider.value(
-          //     value: myCounter,
-          //     child: const OtherPage(),
-          //   ),
-          // ));
           Navigator.of(context).pushNamed("/otherpage");
         },
       ),
