@@ -24,12 +24,13 @@ class BlocProviderPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-              value: myCounter,
-              child: const OtherPage(),
-            ),
-          ));
+          // Navigator.of(context).push(MaterialPageRoute(
+          //   builder: (context) => BlocProvider.value(
+          //     value: myCounter,
+          //     child: const OtherPage(),
+          //   ),
+          // ));
+          Navigator.of(context).pushNamed("/otherpage");
         },
       ),
       body: Column(
