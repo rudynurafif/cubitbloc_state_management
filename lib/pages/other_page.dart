@@ -7,7 +7,7 @@ class OtherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Counter counter = context.read<Counter>();
+    CounterBloc counter = context.read<CounterBloc>();
 
     return Scaffold(
       appBar: AppBar(
@@ -16,7 +16,7 @@ class OtherPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-          child: BlocBuilder<Counter, int>(
+          child: BlocBuilder<CounterBloc, int>(
         bloc: counter,
         builder: (context, state) {
           return Text(

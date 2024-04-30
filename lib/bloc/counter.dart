@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
 
-class Counter extends Cubit<int> {
+class CounterBloc extends Cubit<int> {
   int initData;
 
-  Counter({this.initData = 0}) : super(initData);
+  CounterBloc({this.initData = 0}) : super(initData);
 
   void increment() => emit(state + 1);
 

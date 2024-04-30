@@ -11,10 +11,10 @@ class CentreWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Counter myCounter = BlocProvider.of<Counter>(context);
-    Counter myCounter = context.read<Counter>();
+    CounterBloc myCounter = context.read<CounterBloc>();
 
     return Center(
-      child: BlocBuilder<Counter, int>(
+      child: BlocBuilder<CounterBloc, int>(
         bloc: myCounter,
         builder: (context, state) {
           return Text(

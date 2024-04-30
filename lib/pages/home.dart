@@ -1,4 +1,5 @@
 import 'package:cubitbloc_state_management/bloc/counter.dart';
+import 'package:cubitbloc_state_management/bloc/theme.dart';
 import 'package:cubitbloc_state_management/pages/other_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -6,12 +7,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/data_widget.dart';
 
-class BlocProviderPage extends StatelessWidget {
-  const BlocProviderPage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Counter myCounter = BlocProvider.of<Counter>(context);
+    CounterBloc myCounter = BlocProvider.of<CounterBloc>(context);
+    ThemeBloc myTheme = context.read<ThemeBloc>();
 
     return Scaffold(
       appBar: AppBar(
@@ -24,9 +26,14 @@ class BlocProviderPage extends StatelessWidget {
         shadowColor: Colors.black,
         centerTitle: true,
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.of(context).pushNamed("/otherpage");
+      //   },
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed("/otherpage");
+          myTheme.changeTheme();
         },
       ),
       body: Column(

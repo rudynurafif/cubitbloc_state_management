@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BasicBlocPage extends StatelessWidget {
-  Counter mycounter = Counter();
+  CounterBloc mycounter = CounterBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class BasicBlocPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BlocConsumer<Counter, int>(
+          BlocConsumer<CounterBloc, int>(
             builder: (context, state) {
               return Text(
                 "$state",
