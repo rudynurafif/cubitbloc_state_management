@@ -1,4 +1,5 @@
 import 'package:cubitbloc_state_management/bloc/counter.dart';
+import 'package:cubitbloc_state_management/pages/other_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,16 @@ class BlocProviderPage extends StatelessWidget {
         elevation: 5,
         shadowColor: Colors.black,
         centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+              value: myCounter,
+              child: const OtherPage(),
+            ),
+          ));
+        },
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
